@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ஆர்டர் பதிவு</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.order-container{
+max-width:700px;
+margin:120px auto;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.order-container h1{
+text-align:center;
+color:#2e7d32;
+margin-bottom:30px;
+}
+
+.order-form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.order-form input,
+.order-form select,
+.order-form textarea{
+
+padding:15px;
+font-size:16px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+.order-btn{
+
+background:#2e7d32;
+color:white;
+padding:16px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+    <div class="logo">
+        🌾 இயற்கை விவசாயம்
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#home">முகப்பு</a></li>
+            <li><a href="index.html#about">எங்களை பற்றி</a></li>
+            <li><a href="index.html#products">பொருட்கள்</a></li>
+            <li><a href="order.html" class="active">ஆர்டர்</a></li>
+            <li><a href="index.html#gallery">புகைப்படங்கள்</a></li>
+            <li><a href="index.html#contact">தொடர்பு</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<div class="order-container">
+
+<h1>🛒 ஆர்டர் பதிவு</h1>
+
+<form class="order-form">
+
+<input type="text" id="name" placeholder="உங்கள் பெயர்" required>
+
+<input type="tel" id="phone" placeholder="மொபைல் எண்" required>
+
+<input type="text" id="city" placeholder="ஊர் / மாவட்டம்">
+
+<select id="product">
+
+<option>மாப்பிள்ளை சம்பா அரிசி</option>
+
+<option>கருப்பு கவுனி அரிசி</option>
+
+<option>தூயமல்லி அரிசி</option>
+
+<option>மைசூர் மல்லி அரிசி</option>
+
+<option>மாப்பிள்ளை சம்பா அவல்</option>
+
+<option>நாட்டு சர்க்கரை</option>
+
+<option>அச்சு வெல்லம்</option>
+
+<option>உருண்டை வெல்லம்</option>
+
+</select>
+
+<input type="number"
+id="quantity"
+placeholder="தேவையான அளவு (கிலோ)">
+
+<textarea
+id="message"
+rows="4"
+placeholder="கூடுதல் தகவல்">
+</textarea>
+
+<button
+type="button"
+class="order-btn"
+onclick="sendWhatsapp()">
+
+WhatsApp மூலம் ஆர்டர் அனுப்பு
+
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+function sendWhatsapp(){
+
+let name =
+document.getElementById("name").value;
+
+let phone =
+document.getElementById("phone").value;
+
+let city =
+document.getElementById("city").value;
+
+let product =
+document.getElementById("product").value;
+
+let quantity =
+document.getElementById("quantity").value;
+
+let message =
+document.getElementById("message").value;
+
+let text =
+`வணக்கம்.
+
+புதிய ஆர்டர் பதிவு
+
+பெயர் : ${name}
+
+மொபைல் : ${phone}
+
+ஊர் : ${city}
+
+பொருள் : ${product}
+
+அளவு : ${quantity} கிலோ
+
+குறிப்பு :
+${message}`;
+
+let url =
+`https://wa.me/919042775813?text=${encodeURIComponent(text)}`;
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
